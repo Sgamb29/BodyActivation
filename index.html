@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shadowboxing to warm up the body.">
+    <meta name="keywords" content="warmup, Shadowboxing">
     <link rel="stylesheet" href="style.css">
     <title>Body Activation</title>
 </head>
@@ -10,13 +12,19 @@
     <div class="container">
         <h1>Body Activation</h1>
         <p><em>Shadowboxing to warm up the body.</em></p>
+        <p class="desc">Options</p>
+        <div class="row opts">
+            <button class="btn" id="elbowBtn" onclick="toggleElbows()">Elbows / Hops</button>
+            <button class="btn" id="slowerBtn" onclick="toggleSlower()">Slower</button>
+        </div>
         <button class="btn" id="startBtn" onclick="runWorkout()">Start Workout</button>
+        <p class="desc" id="extrasOutput">Elbows</p>
         <div class="row">
             <p class="indicator" id="hop">
-                Hop!
+                L
             </p>
             <p class="indicator" id="squat">
-                Squat!
+                R
             </p>
         </div>
         <p class="desc">Punches</p>

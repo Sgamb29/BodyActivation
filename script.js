@@ -9,6 +9,10 @@ const hop = document.getElementById("hop");
 const squat = document.getElementById("squat");
 
 const startBtn = document.getElementById("startBtn");
+const elbowBtn = document.getElementById("elbowBtn");
+const slowerBtn = document.getElementById("slowerBtn");
+
+const whiteShade = "rgb(218, 218, 218)";
 
 const indicators = [hop, squat, left, right, rightKnee, leftKnee, rightKick, leftKick];
 
@@ -21,13 +25,15 @@ function runWorkout() {
         resetColors();
         clearInterval(intervalId);
         startBtn.innerText = "Start Workout";
-        startBtn.style.backgroundColor = "rgb(218, 218, 218)";
+        startBtn.style.backgroundColor = whiteShade;
         intervalId = null;
+        slowerBtn.disabled = false;
         return;
     }
 
     startBtn.innerText = "End Workout";
     startBtn.style.backgroundColor = "lightGreen";
+    slowerBtn.disabled = true;
 
     let indictorsToHighlight = [];
 
@@ -61,8 +67,35 @@ function chooseRandomIndicator() {
 
 function resetColors() {
     indicators.forEach((el) => {
-        el.style.backgroundColor = "rgb(218, 218, 218)";
+        el.style.backgroundColor = whiteShade;
     })
+}
+
+function toggleElbows() {
+    const extrasOutput = document.getElementById("extrasOutput");
+    const hopStr = "Hop!";
+    const squatStr = "Squat!";
+    if (hop.innerText === hopStr) {
+        extrasOutput.innerText = "Elbows";
+        hop.innerText = "L";
+        squat.innerText = "R";
+        elbowBtn.style.background = whiteShade;
+    } else {
+        hop.innerText = hopStr;
+        squat.innerText = squatStr;
+        extrasOutput.innerText = "Hop - Squat";
+        elbowBtn.style.backgroundColor = "lightGreen"; 
+    }
+}
+
+function toggleSlower() {
+    if (timeBetweenSteps === 1500) {
+        timeBetweenSteps = 2000;
+        slowerBtn.style.backgroundColor = "lightGreen";
+    } else {
+        timeBetweenSteps = 1500;
+        slowerBtn.style.backgroundColor = whiteShade;
+    }
 }
 
 
